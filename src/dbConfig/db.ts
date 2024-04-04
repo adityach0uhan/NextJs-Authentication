@@ -1,5 +1,3 @@
-
-import { connect } from "http2";
 import mongoose from "mongoose";
 
 export async function createDatabaseConnection() {
@@ -16,6 +14,7 @@ export async function createDatabaseConnection() {
             process.exit();
         });
         
+
         
     } catch (error) {
         console.log("Error Occurred During Database Connection:", error);
