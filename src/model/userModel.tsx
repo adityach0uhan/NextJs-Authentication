@@ -3,7 +3,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true,
-        require:[true,"Please Provide an username"]
+        require: [true, "Please Provide an username"]
     },
     emailid: {
         type: String,
@@ -12,10 +12,12 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        require:true
+        require: true
     },
     verifyUserToken: String,
     verifyUserTokenExpiry: Date,
     forgotPasswordToken: String,
-    forgotPasswordTokenExpiry:Date
-})
+    forgotPasswordTokenExpiry: Date
+});
+
+export const userModel = mongoose.model.users || mongoose.model('users', userSchema);
