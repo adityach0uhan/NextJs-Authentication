@@ -5,10 +5,11 @@ Create a `.env` file in the root directory of your project and add the following
 MONGO_URI=your_mongo_uri_here
 SECRETKEY=your_secret_key_here
 DOMAIN=your_domain_here
+SMTP_PASSWORD=
+SMTP_USERID=
+SMTP_HOST=
 
-
-Make sure to replace `your_mongo_uri_here`, `your_secret_key_here`, and `your_domain_here` with your actual MongoDB URI, secret key, and domain.
-
+Replace `your_mongo_uri_here`, `your_secret_key_here`, and `your_domain_here` with your actual MongoDB URI, secret key, and domain.`SMTP_PASSWORD`, `SMTP_USERID`, and `SMTP_HOST` 
 ## Getting Started
 1. Install the required dependencies by running:
 npm install
