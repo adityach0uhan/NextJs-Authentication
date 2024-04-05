@@ -9,7 +9,7 @@ export async function POST(request: NextRequest) {
 
   try {
 
-    const requestBody = request.json
+    const requestBody = await request.json();
     const { username, password, email } = requestBody;
 
     await userModel.findOne({ email })
