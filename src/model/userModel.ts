@@ -20,4 +20,5 @@ const userSchema = new mongoose.Schema({
     forgotPasswordTokenExpiry: Date
 });
 
-export const userModel = mongoose.model.users || mongoose.model('users', userSchema);
+const userModel = mongoose.model.users || mongoose.model('users', userSchema);
+export default userModel;
