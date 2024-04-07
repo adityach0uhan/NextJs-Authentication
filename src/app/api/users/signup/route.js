@@ -3,29 +3,32 @@ import userModel from '@/model/userModel'
 import { NextRequest, NextResponse } from 'next/server';
 import bcryptjs from 'bcryptjs';
 import sendEmail from '@/helper/mailer.helper'
-createDatabaseConnection();
 
-export async function POST(request: NextRequest) {
+
+await createDatabaseConnection();
+export async function POST(request) {
 
   try {
-
     const requestBody = await request.json();
-    const { username, password, email } = requestBody;
+    const { username, password, email } =await requestBody;
+    const existingUser = await userModel.findOne({ email });
 
-    await userModel.findOne({ email })
-    if (userModel) {
-      return NextResponse.json({ error: "Already Exist" });
+
+    if (existingUser) {
+      return NextResponse.json({ error: "Email Already Exists" });
     }
+
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
 
+
     const UserData = await new userModel({
-      username,
+      username:username,
       password: hashedPassword,
       emailid: email,
     })
-    const UserSignUpSuccessfull = UserData.save();
-    console.log(UserSignUpSuccessfull);
+    const UserSignUpSuccessfull =await UserData.save();
+    // console.log(UserSignUpSuccessfull);
 
     //Verification 
     await sendEmail({ email, userID:UserSignUpSuccessfull._id, emailType:"VERIFY" })
@@ -35,9 +38,12 @@ export async function POST(request: NextRequest) {
       UserSignUpSuccessfull,
     })
 
-  } catch (error: any) {
+  } catch (error) {
 
-    return NextResponse.json({ error: error.message })
+    return NextResponse.json({
+      message: "Error occurred in routing page ",
+      error: error.message
+    })
 
   }
 
