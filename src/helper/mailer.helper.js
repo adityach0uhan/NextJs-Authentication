@@ -14,8 +14,8 @@ export default async function sendEmail({ email, userID, emailType }) {
             })
 
         } else if (emailType === 'RESET') {
-            const hashedToken = await bcryptjs.hash(userID.toString(), 10); console.log("Hashed Token :", hashedToken);
-
+            const hashedToken = await bcryptjs.hash(userID.toString(), 10);
+            console.log("Hashed Token :", hashedToken);
             userModel.findByIdAndUpdate(userID, {
                 forgotPasswordToken: hashedToken,
                 forgotPasswordTokenExpiry: Date.now() + 3600000,
@@ -33,10 +33,22 @@ export default async function sendEmail({ email, userID, emailType }) {
         });
 
         const info = await transporter.sendMail({
-            from: "Aditya Chauhan",
+            from: "adityach0uhan@gmail.com",
             to: email,
             subject: emailType === 'VERIFY' ? 'Verify Your Email ' : 'Reset Password',
-            html: ``,
+            html: `<h4>
+                   Dear User,
+                  </h4>
+            <p>
+            Please click the following link to
+             ${emailType === 'VERIFY' ? `Verify your Email ${email}` : 'reset your password'}:</p>
+            <p>
+            <a href="${verificationLink}">
+            ${emailType === 'VERIFY' ? 'Verify Email' : 'Reset Password'}
+            </a>
+            </p>
+            <p>If you did not request this ${emailType === 'VERIFY' ? 'verification' : 'password reset'}, you can ignore this email.</p>
+            <p>Thank you!</p>`,
         });
         console.log("Message sent: %s", info.messageId);
 
