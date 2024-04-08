@@ -32,15 +32,7 @@ export default async function sendEmail({ email, userID, emailType }) {
             },
         });
 
-        console.log("All data regarding SMTP",
-            "USerID :",process.env.SMTP_USERID,
-            "user password :", process.env.SMTP_PASSWORD,
-            "smtp port:", process.env.SMTP_PORT,
-            "smtp host :", process.env.SMTP_HOST,
-            "destination email", email
-        )
-
-        const verificationLink = 'http://localhost:3000';
+        const verificationLink = process.env.DOMAIN + "/verifyemail?token=" + hashedToken;
         const info = await transporter.sendMail({
             from: "adityach0uhan@gmail.com",
             to: email,
