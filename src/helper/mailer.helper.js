@@ -5,16 +5,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 export default async function sendEmail({ email, userID, emailType }) {
     try {
+        const hashedToken = await bcryptjs.hash(userID.toString(), 10);
         if (emailType === 'VERIFY') {
 
-            const hashedToken = await bcryptjs.hash(userID.toString(), 10);
             userModel.findByIdAndUpdate(userID, {
                 verifyUserToken: hashedToken,
                 verifyUserTokenExpiry: Date.now() + 3600000,
             })
 
         } else if (emailType === 'RESET') {
-            const hashedToken = await bcryptjs.hash(userID.toString(), 10);
             console.log("Hashed Token :", hashedToken);
             userModel.findByIdAndUpdate(userID, {
                 forgotPasswordToken: hashedToken,
@@ -51,7 +50,7 @@ export default async function sendEmail({ email, userID, emailType }) {
             <p>If you did not request this ${emailType === 'VERIFY' ? 'verification' : 'password reset'}, you can ignore this email.</p>
             <p>Thank you!</p>`,
         });
-        console.log("Message sent: %s", info.messageId);
+        console.log("Message sent: %s", info);
 
     }
     catch (error) {

@@ -13,7 +13,6 @@ export async function POST(request) {
     const { username, password, email } =await requestBody;
     const existingUser = await userModel.findOne({ email });
 
-
     if (existingUser) {
       return NextResponse.json({ error: "Email Already Exists" });
     }
