@@ -9,19 +9,21 @@ export async function POST(request) {
 
     try {
         const Requestbody = await request.json();
-        const { email, password } =await Requestbody;
-        const user = await userModel.findOne(email);
+        const { email, password } = await Requestbody;
+        const user = await userModel.findOne({ emailid: email });
         
         if (!user) {
             return NextResponse.json({
-                message:`No user find with ${email}`
+                message:`No User Found With this email :${email}  `,
             })
         }
 
+        const verified = await bcryptjs.compare(password,user.password);
+        console.log(verified)
+        
         return NextResponse.json({
-            message: user,
+            message: "User Found ",
         })
-
 
 
 
@@ -30,7 +32,7 @@ export async function POST(request) {
 
         return NextResponse.json({
             message: "Something Went Wrong in Login Section",
-            error: error,
+            error: error.message,
             success: false
         })
 
