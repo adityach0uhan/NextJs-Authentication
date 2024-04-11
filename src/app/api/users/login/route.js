@@ -2,7 +2,7 @@ import createDatabaseConnection from '@/dbConfig/db';
 import userModel from '@/model/userModel'
 import { NextRequest, NextResponse } from 'next/server';
 import bcryptjs from 'bcryptjs';
-
+import jwt from "jsonwebtoken"
 createDatabaseConnection();
 
 export async function POST(request) {
@@ -11,17 +11,37 @@ export async function POST(request) {
         const Requestbody = await request.json();
         const { email, password } = await Requestbody;
         const user = await userModel.findOne({ emailid: email });
-        
+
         if (!user) {
             return NextResponse.json({
-                message:`No User Found With this email :${email}  `,
+                message: `No User Found With this email :${email}  `,
             })
         }
 
-        const verified = await bcryptjs.compare(password,user.password);
-        console.log(verified)
-        
-        return NextResponse.json({
+        const isVerified = await bcryptjs.compare(password, user.password);
+
+        if (!isVerified) {
+            return NextResponse.json({
+                message: "Check Your Credentials",
+                status: 400,
+            })
+        }
+
+        const tokenPayload = {
+            id: user._id,
+        }
+
+        const jwtToken = await jwt.sign
+            (
+                tokenPayload,
+                process.env.JWT_SECRET_KEY,
+                {
+                    expiresIn: '1d'
+                }
+            );
+
+
+        const response = NextResponse.json({
             message: "User Found ",
         })
 
