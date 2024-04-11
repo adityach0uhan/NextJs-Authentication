@@ -42,9 +42,15 @@ export async function POST(request) {
 
 
         const response = NextResponse.json({
-            message: "User Found ",
+            message: "Login Successfull",
+            success:true,
         })
 
+        response.cookies.set("token", jwtToken, {
+            httpOnly:true,
+        })
+ 
+        return response;
 
 
 
