@@ -5,9 +5,8 @@ import axios from 'axios';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
-const page = () => {
+const SignUp = () => {
   const router = useRouter();
-
   const [userData, setuserData] = useState({
     username: "", password: "", email: ""
   })
@@ -16,9 +15,7 @@ const page = () => {
   const [buttonEnable, setbuttonEnable] = useState(false);
   const [buttonColor, setbuttonColor] = useState("red");
 
-
   const submitForm = async () => {
-
     try {
       setloading(true)
       const response = await axios.post('api/users/signup', userData);
@@ -33,19 +30,16 @@ const page = () => {
 
     if (userData.email.length > 1 && userData.username.length > 1 && userData.password.length > 1){
       setbuttonEnable(true)
-      setbuttonColor('bg-green-500');
-
+      setbuttonColor('bg-green-700');
     } else {
       setbuttonEnable(false)
       setbuttonColor('bg-red-500')
-
     }
   }, [userData])
 
 
   return (
     <>
-
       <div className=' md:w-96 w-full mx-auto  mt-16 flex-col items-center justify-center flex h-96 '>
         <h4 className='text-3xl mb-4'>{loading ? "Processing" : "Signup"}</h4>
         {/* username  */}
@@ -88,9 +82,8 @@ const page = () => {
         </button>
         <Link className='mt-2 text-blue-700' href='/login'>Already registered ? Login here</Link>
       </div>
-
     </>
   )
 }
 
-export default page
+export default SignUp
