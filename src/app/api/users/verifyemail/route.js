@@ -16,7 +16,7 @@ export async function POST(request) {
                 $gt: Date.now()
             }
         })
-
+        console.log(user)
         if (!user) {
             return NextResponse.json({
                 message: "Invalid Token , Token May be expired",

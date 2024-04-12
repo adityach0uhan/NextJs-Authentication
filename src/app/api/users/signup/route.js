@@ -40,7 +40,7 @@ export async function POST(request) {
   } catch (error) {
 
     return NextResponse.json({
-      message: "Error occurred in routing page ",
+      message: "Error occurred in signup route page ",
       error: error.message
     })
 
