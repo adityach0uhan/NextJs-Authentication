@@ -44,13 +44,13 @@ const SignUp = () => {
         <h4 className='text-3xl mb-4'>{loading ? "Processing" : "Signup"}</h4>
         {/* username  */}
         <div id='username' className='flex h-16 mb-8 w-full flex-col items-center justify-center '>
-          <label className='flex h-10' htmlFor="username">Username  </label>
+          <label className='flex h-10' htmlFor="username">Username 👤 </label>
           <input
             value={userData.username}
             onChange={(e) => { setuserData({ ...userData, username: e.target.value }) }}
-            className='p-2 w-3/4 rounded-xl h-10'
+            className='p-2 w-3/4 rounded-xl h-10 border border-black border-1'
             type="text"
-            placeholder='Username' />
+            placeholder='Username.... ' />
         </div>
 
         {/* email  */}
@@ -59,28 +59,28 @@ const SignUp = () => {
           <input
             value={userData.email}
             onChange={(e) => { setuserData({ ...userData, email: e.target.value }) }}
-            className='p-2 w-3/4 rounded-xl h-10'
+            className='p-2 w-3/4 rounded-xl h-10 border border-black border-1'
             type="text"
-            placeholder='email' />
+            placeholder='Email.... ' />
         </div>
 
         {/* password */}
         <div id='password' className='flex h-16 mb-8 w-full flex-col items-center justify-center'>
-          <label className='flex h-10 ' htmlFor="username">password</label>
+          <label className='flex h-10 ' htmlFor="username">Password 🔑 </label>
           <input
             value={userData.password}
             onChange={(e) => { setuserData({ ...userData, password:e.target.value }) }}
-            className='p-2 w-3/4 rounded-xl h-10'
+            className='p-2 w-3/4 rounded-xl h-10 border border-black border-1'
             type="password"
-            placeholder='password' />
+            placeholder='Password.... ' />
         </div>
 
         <button
           onClick={submitForm}
           className={`border-1 h-8 border-black w-3/4  p-2 rounded-lg ${buttonColor} text-center flex items-center justify-center` } >
-          {buttonEnable ? 'Sign Up' : "All inputs are necessary"}
+          {buttonEnable ? 'Sign Up  ' : "🚫 All inputs are necessary"}
         </button>
-        <Link className='mt-2 text-blue-700' href='/login'>Already registered ? Login here</Link>
+        <Link className='mt-2 text-blue-700' href='/login'>Already registered❓Login here</Link>
       </div>
     </>
   )
