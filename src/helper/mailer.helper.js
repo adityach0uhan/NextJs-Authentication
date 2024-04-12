@@ -6,18 +6,19 @@ dotenv.config();
 export default async function sendEmail({ email, userID, emailType }) {
     try {
         const hashedToken = await bcryptjs.hash(userID.toString(), 10);
-        console.log("Hashed Token line 9 send email :",hashedToken)
         if (emailType === 'VERIFY') {
-            console.log("this it the user id",userID)
-               const userdata=await userModel.findByIdAndUpdate(userID, {
-                verifyUserToken: hashedToken,
-                verifyUserTokenExpiry: Date.now() + 3600000,
-               })
+            
+            const userdata = await userModel.findByIdAndUpdate(userID,{
+                $set:{
+                    verifyUserToken: hashedToken,
+                    verifyUserTokenExpiry: Date.now() + 3600000,
+                }
+               });
             console.log(userdata)
             
 
         } else if (emailType === 'RESET') {
-            console.log("Hashed Token :", hashedToken);
+
             userModel.findByIdAndUpdate(userID, {
                 forgotPasswordToken: hashedToken,
                 forgotPasswordTokenExpiry: Date.now() + 3600000,
