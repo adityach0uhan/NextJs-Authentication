@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Next Auth",
-    "dateExported": "2024-04-12T14:15:24.398Z",
+    "dateExported": "2024-04-12T14:27:45.472Z",
     "version": "1.1",
     "folders": [],
     "requests": [
@@ -28,12 +28,12 @@
             "method": "POST",
             "sortNum": 30000,
             "created": "2024-04-12T14:14:08.016Z",
-            "modified": "2024-04-12T14:14:08.016Z",
+            "modified": "2024-04-12T14:24:51.884Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"username\":\"adibhai2\",\n  \"email\":\"adibhai2@gmail.com\",\n  \"password\":\"adibhai1\"\n}",
+                "raw": "{\n  \"username\":\"test123\",\n  \"email\":\"test123@gmail.com\",\n  \"password\":\"test123\"\n}",
                 "form": []
             },
             "tests": []
@@ -47,12 +47,12 @@
             "method": "POST",
             "sortNum": 40000,
             "created": "2024-04-12T14:14:14.800Z",
-            "modified": "2024-04-12T14:14:14.800Z",
+            "modified": "2024-04-12T14:26:07.507Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"email\":\"adibhai@gmail.com\",\n  \"password\":\"adibhai\"\n}",
+                "raw": "{\n  \"email\":\"test123@gmail.com\",\n  \"password\":\"test123\"\n}",
                 "form": []
             },
             "tests": []
@@ -74,6 +74,20 @@
                 "raw": "{\n  \"token\":\"$2a$10$6hvfh7yZdY6UsqQRafIjaOrX46yEtGCZIxLIE5uO8D3EOOZmiPzcm\"\n}",
                 "form": []
             },
+            "tests": []
+        },
+        {
+            "_id": "4aeb04b1-daec-47c9-9997-f2e0acab1a03",
+            "colId": "c7a83cc9-8076-4968-8864-28e93ad4de01",
+            "containerId": "",
+            "name": "nextauth logout",
+            "url": "http://localhost:3000/api/users/logout",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-04-12T14:27:00.048Z",
+            "modified": "2024-04-12T14:27:00.048Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]
