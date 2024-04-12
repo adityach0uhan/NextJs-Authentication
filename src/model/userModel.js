@@ -10,6 +10,14 @@ const userSchema = new mongoose.Schema({
         unique: true,
         require: [true, "Please Provide an Email"]
     },
+    isVerified: {
+        type: Boolean,
+        default:false,
+    },
+    idAdmin: {
+        type: Boolean,
+        default:false,
+    },
     password: {
         type: String,
         require: true
