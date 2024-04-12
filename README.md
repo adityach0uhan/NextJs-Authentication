@@ -2,10 +2,10 @@
 ## Setup .env File
 Create a `.env` file in the root directory of your project and add the following variables with your own values:
 
-MONGO_URI=your_mongo_uri_here
-SECRETKEY=your_secret_key_here
-DOMAIN=your_domain_here
-SMTP_PASSWORD=
+MONGO_URI =  your_mongo_uri_here
+JWT_SECRET_KEY = your_secret_key_here
+DOMAIN = your_domain_here
+SMTP_PASSWORD = 
 SMTP_USERID=
 SMTP_HOST=
 
