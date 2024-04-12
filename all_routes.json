@@ -1,0 +1,80 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Next Auth",
+    "dateExported": "2024-04-12T14:15:24.398Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "17b7fb7f-1e49-4663-8025-6b79434e1255",
+            "colId": "c7a83cc9-8076-4968-8864-28e93ad4de01",
+            "containerId": "",
+            "name": "userdetails",
+            "url": "http://localhost:3000/api/users/userDetails",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-12T14:13:53.832Z",
+            "modified": "2024-04-12T14:13:53.832Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "497a819a-d795-48e4-84a8-0fb009902107",
+            "colId": "c7a83cc9-8076-4968-8864-28e93ad4de01",
+            "containerId": "",
+            "name": "NextAuth Signup",
+            "url": "http://localhost:3000/api/users/signup",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-04-12T14:14:08.016Z",
+            "modified": "2024-04-12T14:14:08.016Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\":\"adibhai2\",\n  \"email\":\"adibhai2@gmail.com\",\n  \"password\":\"adibhai1\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d7102533-f0d4-46c5-a5fe-a9a244f04727",
+            "colId": "c7a83cc9-8076-4968-8864-28e93ad4de01",
+            "containerId": "",
+            "name": "NextAuth Login",
+            "url": "http://localhost:3000/api/users/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-04-12T14:14:14.800Z",
+            "modified": "2024-04-12T14:14:14.800Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"adibhai@gmail.com\",\n  \"password\":\"adibhai\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d2dbe65a-0d07-4532-ae6c-07221b03e646",
+            "colId": "c7a83cc9-8076-4968-8864-28e93ad4de01",
+            "containerId": "",
+            "name": "verifyEmail",
+            "url": "http://localhost:3000/api/users/verifyemail",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-04-12T14:14:23.597Z",
+            "modified": "2024-04-12T14:14:23.597Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"token\":\"$2a$10$6hvfh7yZdY6UsqQRafIjaOrX46yEtGCZIxLIE5uO8D3EOOZmiPzcm\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
