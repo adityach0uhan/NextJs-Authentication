@@ -36,7 +36,7 @@ export default async function sendEmail({ email, userID, emailType }) {
             },
         });
 
-        const verificationLink = process.env.DOMAIN + "/verifyemail?token=" + hashedToken;
+        const verificationLink = process.env.DOMAIN + "/verifyemail?token="+hashedToken;
         const info = await transporter.sendMail({
             from: "adityach0uhan@gmail.com",
             to: email,
